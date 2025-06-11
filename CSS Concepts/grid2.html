@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            
+            margin: auto;
+            width: 50vw;
+            height: 50vh;
+            gap: 6px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-template: "q1 q1 q2"
+                           "q3 q4 q2";
+        }
+
+        .box>div:nth-child(1){
+            background-color: antiquewhite;
+            border-radius: 15px;
+            grid-area: q1;
+        }
+        .box>div:nth-child(2){
+            background-color: rgb(127, 100, 65);
+            border-radius: 15px;
+           
+            grid-area: q2;
+        }
+        .box>div:nth-child(3){
+            background-color: rgb(112, 175, 17);
+            border-radius: 15px;
+            
+            grid-area: q3;
+        }
+        .box>div:nth-child(4){
+            background-color: rgb(42, 113, 91);
+            border-radius: 15px;
+            
+            grid-area: q4;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        
+    </div>
+    
+</body>
+</html>

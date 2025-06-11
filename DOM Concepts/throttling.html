@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 5000vh;
+        }
+        button{
+            border: none;
+            background-color: bisque;
+            padding: 10px 20px;
+            margin: auto;
+            border-radius: 10px;
+        }
+        
+        button:active{
+            background-color: rgb(244, 188, 120);
+
+        }
+    </style>
+</head>
+<body>
+
+    <button id="button">Click me</button>
+    
+</body>
+</html>
+
+<script>
+    
+    document.getElementById('button').addEventListener('click', press);
+            
+          let flag = true;
+            function press(){
+                console.log("Button click")
+                if(flag){
+                    console.log('1')
+                    flag = false;
+                }
+                setTimeout(()=>{
+                      flag = true;
+                },1000)
+                }
+            
+
+    
+</script>

@@ -1,0 +1,65 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js"></script>
+    <style>
+        body{
+            font-family: sans-serif;
+            text-align: center;
+            background-color: #f4f4f4f4;
+        }
+
+        input,button{
+            margin: 6px;
+            padding: 10px;
+        }
+
+        #movie-list{
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            justify-content: center;
+            width: 90%;  
+            /* border: 2px solid black; */
+            margin: auto;
+
+        }
+        img{
+            width: 100%;
+        }
+
+        #movie-list div{
+              border-radius: 10px;
+              background-position: center;
+              background-size: cover;
+            }
+            #movie-list>div:hover{
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <h2>Firebase Admin page</h2>
+    <input type="text"  id="id" readonly>
+    <input type="text" placeholder="Movie-Title" name="" id="title">
+    <input type="number" placeholder="year" name="" id="year">
+    <input type="text" placeholder="Gener" name="" id="gener">
+    <input type="text" placeholder="Image URL" name="" id="image">
+
+    <button onclick="addmovie()">Submit</button>
+    
+    <h3>Movie Lists</h3>
+    <div id="movie-list"><div>
+       
+        
+    
+</body>
+</html>

@@ -1,0 +1,82 @@
+ 
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            display: grid;
+            align-items: stretch;
+            border: 3px solid black;
+            height: 98vh;
+            gap: 5px;
+            grid-template-areas: 
+            "q4 q4 q6"
+            "q7 q9 q6"
+            "q7 q8 .";
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        }
+        
+        .box>div{
+            border: 2px solid   ;
+            border-radius: 10px;
+        }
+
+        div.box>div:nth-of-type(1){
+            background-color: aquamarine;
+            grid-area: q1;
+        }
+        div.box>div:nth-of-type(2){
+            grid-area: q2;
+            background-color: rgb(57, 81, 73);
+        }
+        div.box>div:nth-of-type(3){
+            grid-area: q3;
+            background-color: rgb(127, 172, 255);
+        }
+        div.box>div:nth-of-type(4){
+            grid-area: q4;
+            background-color: rgb(146, 255, 127);
+        }
+        div.box>div:nth-of-type(5){
+            grid-area: q5;
+            background-color: rgb(249, 255, 127);
+        }
+        div.box>div:nth-of-type(6){
+            grid-area: q6;
+            background-color: rgb(242, 127, 255);
+        }
+        div.box>div:nth-of-type(7){
+            grid-area: q7;
+            background-color: rgb(157, 127, 255);
+        }
+        div.box>div:nth-of-type(8){
+            grid-area: q8;
+            background-color: rgba(127, 255, 142, 0.646);
+        }
+        div.box>div:nth-of-type(9){
+            grid-area: q9;
+            background-color: rgb(41, 60, 54);
+        }
+    </style>
+ </head>
+ <body>
+    <div class="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+    </div>
+    
+ </body>
+ </html>

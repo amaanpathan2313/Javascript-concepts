@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication with Authorization</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        input,
+        button,
+        select {
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="sign-up">
+        <input type="email" name="" id="semail" placeholder="Enter Email">
+        <input type="password" name="" id="spassword" placeholder="Enter Password">
+        <select name="" id="role">
+            <option value="user">user</option>
+            <option value="admin">admin</option>
+        </select>
+        <button id="registration">SignUp</button>
+    </div>
+    <div id="login-in">
+        <input type="email" name="" id="lemail" placeholder="Enter Email">
+        <input type="password" name="" id="lpassword" placeholder="Enter Password">
+
+        <button id="login">Login</button>
+    </div>
+    <button id="logout">Logout</button>
+
+    <h3>Welcome <span id="show-email"></span> (<span id="role"></span>) </h3>
+
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
+        import {
+            getAuth,
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword,
+            signOut,
+            onAuthStateChanged
+        } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+        import {
+            getFirestore,  // create connection between code and firestore
+            doc,          // create a document e.g: {email,role},{email,role},{email,role}
+            setDoc,      // to set data
+            getDoc       // to get data    
+        } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyDcJKfn7JdXEOhymPPyOeAF-Gihie-YOa0",
+            authDomain: "auth-82713.firebaseapp.com",
+            databaseURL: "https://auth-82713-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "auth-82713",
+            storageBucket: "auth-82713.firebasestorage.app",
+            messagingSenderId: "75966036012",
+            appId: "1:75966036012:web:47685622249db0942a7989",
+            measurementId: "G-TVBBQM9VTY"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+        const db = getFirestore(app);  // stablish connection
+
+        //   =============  code for registration    =====================
+         
+
+
+        document.getElementById('registration').addEventListener("click", async()=>{
+
+            let email = document.getElementById('semail').value;
+            let password = document.getElementById('spassword').value;
+            let role = document.getElementById('role').value;
+
+            try {
+                let userCredential = await createUserWithEmailAndPassword(auth,email,password);
+                alert(`${email} successfully Register`)
+                let user = userCredential.user;
+                console.log(user.uid)
+
+
+                //  Sava user role to fireStore
+
+                await setDoc(doc(db,"users", user.uid),{
+                    email : user.email,     // 
+                    role : role  // we accesss it directly
+                 })
+
+                 document.getElementById('show-email').innerText = "Registration Succsssfull";              
+                 document.getElementById('role').value = role;              
+
+            } catch (error) {
+                alert(error.message)
+            }
+
+
+        }) //  addEventListener  signup
+
+
+        //   =============  code for Login    =====================
+
+        document.getElementById('login').addEventListener("click", async()=>{
+
+            let email = document.getElementById('lemail').value;
+            let password = document.getElementById('lpassword').value;
+
+            try {
+
+                let userCredentials = await signInWithEmailAndPassword(auth, email, password);
+                document.getElementById('show-email').innerText = "login Succsssfull";              
+                
+                
+            } catch (error) {
+                 alert(error.message)
+            }
+        })  //  //  addEventListener  login
+
+        //   =============  code for Logout    =====================
+
+         document.getElementById('logout').addEventListener("click",async()=>{
+            await signOut(auth);
+            alert("you are logout")
+         })
+
+        //   =============  code for on State change    =====================
+
+
+        onAuthStateChanged(auth, async(user)=>{
+            if(user){
+                console.log("I am state change");
+
+                // get role from fire store
+
+                let userData = await getDoc(doc(db, "users", user.uid))
+                    if(userData.exists()){
+                        let role = userData.data().role;
+                        document.getElementById('show-email').innerText = role;
+                    }
+                
+            }else{
+
+            }
+        })
+
+ 
+
+    </script>
+
+</body>
+
+</html>
+
+

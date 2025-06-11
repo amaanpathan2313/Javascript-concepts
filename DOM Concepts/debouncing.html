@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+     <input type="text" placeholder="Enter product Name" id="input">
+
+</body>
+</html>
+
+<script>
+
+// Debouncing => delays the execution of a function until after a specified time has passed since the last event.
+
+// without debouncing :
+
+//   document.getElementById('input').addEventListener('input',(e) => {  
+//     console.log(e.target.value)
+//   })
+
+// using debouncing :
+
+let timer;
+document.getElementById('input').addEventListener('input',(e) => {
+
+  clearTimeout(timer)
+
+    timer = setTimeout(()=>{
+             console.log(e.target.value)
+    },2000)
+
+})
+
+ </script> 
+
+
+<!-- ///          ======================================                  /// -->
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+
+   <input type="text" placeholder="Enter Text" id="input">
+   
+   
+</body>
+</html>
+
+       <script>
+           let timer;
+           document.getElementById('input').addEventListener('input',(e)=>{
+
+               clearTimeout(timer)
+               timer = setTimeout(()=>{
+                   
+                   fetch(e.target.value)
+               },2000)
+
+
+           })
+
+
+           function fetch(query){
+               console.log(query)
+           }
+       </script>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+

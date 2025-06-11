@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            border: 2px solid black;
+            margin: auto;
+            width: 60vw;
+            height: 100vh;
+            display: flex;
+        }
+
+        .box>div{
+            border: 2px solid black;
+            width: 50%;
+            height: 10%;
+        }
+
+        .box>div:nth-child(1){
+            order: 2;                 /*  it 2nd div  */
+        }
+        .box>div:nth-child(2){
+            order: 4;                 /*  it 4th div  */
+        }
+        .box>div:nth-child(3){
+            order: 1;                 /*  it 1st div  */
+        }
+        .box>div:nth-child(4){
+            order: 3;                    /*  it 3rd div  */
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</body>
+</html>
