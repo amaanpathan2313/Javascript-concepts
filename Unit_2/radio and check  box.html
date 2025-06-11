@@ -1,0 +1,53 @@
+<!-- // Check box and Radio button in  DOM -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="radio" name="gender" id="male" value="male"> Male
+    <input type="radio" name="gender" id="female" value="female"> Female
+    <input type="radio" name="gender" id="other" value="other"> Other
+
+    <button onclick="radio()">ss</button> <br>
+
+
+    <input type="checkbox" name="js" id="js" value="js"> JS
+    <input type="checkbox" name="js" id="py" value="py"> py
+    <input type="checkbox" name="js" id="node" value=nodes"> node
+</body>
+
+</html>
+
+<script>
+    function radio() {
+
+        // radio
+
+        let gender = document.getElementsByName('gender');  /// it give nodeList
+        gender.forEach(element => {
+            if (element.checked) {
+                console.log(element.value)
+            }
+        });
+
+        // check box
+
+        let skill = document.getElementsByName('js');
+        skill.forEach((element) => {
+            if (element.checked) {
+                console.log(element.value)
+            }
+        })
+
+    }
+
+
+</script>
